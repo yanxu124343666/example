@@ -1,0 +1,14 @@
+#!/bin/bash
+#batch add users with file called users.list
+
+for username in $(more users.list)
+do
+if [ $username ]
+then 
+   useradd -m $username
+   echo $username"123456" | passwd --stdin $username
+   echo "User $username has existed!"
+else
+   echo "The username doesn't exist!"
+fi
+done
